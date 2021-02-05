@@ -161,7 +161,7 @@ def checkAns(li):
         rightFlag=5
         score+=1
     else:
-        rightFlag=li[0]
+        rightFlag=li[0]+1 #1,2,3,4 : 오답 #5 정답
     
 def setInit():
     global songFlag
@@ -195,6 +195,7 @@ def playScreen():
     gameexit = False
     songs = getSongs()
     global songFlag
+    songFlag=False
     songTest = []
     songText = []
     stage = 0
@@ -226,7 +227,7 @@ def playScreen():
         if rightFlag>0:
             gameDisplay.blit(okImg, (0, answer*100+150))
             if rightFlag<5:
-                gameDisplay.blit(noImg, (0, rightFlag*100+150))
+                gameDisplay.blit(noImg, (0, (rightFlag-1)*100+150))
             if stage<10:
                 nextButton=Button(nextImg,650,500,120,55,clickNextImg,647,497,setInit)
             else:
